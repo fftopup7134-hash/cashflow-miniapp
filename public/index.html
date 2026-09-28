@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+  <title>CashFlow</title>
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <script src='//libtl.com/sdk.js' data-zone='11916419' data-sdk='show_11916419'></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <header>
+      <div class="brand"><span>Cash</span><b>Flow</b></div>
+      <div class="actions">
+        <button class="pill" onclick="showSupport()">💬 Support</button>
+        <button class="pill" onclick="toggleLanguage()">🌐 <span id="lang">EN</span></button>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="small">TOTAL BALANCE</div>
+        <div class="balance">$<span id="balance">0.00</span></div>
+        <div class="muted">Available to withdraw</div>
+        <div class="profile">
+          <div class="avatar" id="avatar">C</div>
+          <div><strong id="name">Guest</strong><small>ID: <span id="uid">demo</span></small></div>
+        </div>
+        <div class="quick">
+          <button onclick="go('ads')">▶ Watch Ads</button>
+          <button onclick="go('tasks')">✓ Tasks</button>
+          <button onclick="go('invite')">👥 Invite</button>
+        </div>
+      </section>
+
+      <section id="ads" class="section">
+        <h2>EARN BY WATCHING</h2>
+        <div class="card">
+          <div class="icon play">▶</div>
+          <div class="grow"><h3>Watch Ad</h3><p>Watch a rewarded ad and earn</p></div>
+          <strong class="reward">+$0.30</strong>
+          <div class="progress"><i id="adProgress"></i></div>
+          <span class="count" id="adCount">0 / 20</span>
+          <button class="full" onclick="watchAd()">Watch Ad</button>
+        </div>
+      </section>
+
+      <section id="tasks" class="section">
+        <h2>TASKS</h2>
+        <div class="card task">
+          <div class="icon">✓</div>
+          <div class="grow"><h3>Daily Task</h3><p>Complete the task to earn your reward</p></div>
+          <strong class="reward">+$0.50</strong>
+          <button class="full" onclick="completeTask()">Complete Task</button>
+        </div>
+      </section>
+
+      <section id="invite" class="section">
+        <h2>INVITE FRIENDS</h2>
+        <div class="card">
+          <div class="icon">👥</div>
+          <div class="grow"><h3>Referral Bonus</h3><p>Share your invite link</p></div>
+          <strong class="reward">+$1.00</strong>
+          <button class="full" onclick="invite()">Copy / Share Invite</button>
+        </div>
+      </section>
+
+      <section id="withdraw" class="section">
+        <h2>WITHDRAW</h2>
+        <div class="card form">
+          <label>Amount (USD)</label>
+          <input id="amount" type="number" min="5" step="0.01" placeholder="5.00">
+          <label>Method</label>
+          <select id="method"><option value="">Select method</option><option>bKash</option><option>Nagad</option><option>Crypto</option></select>
+          <label>Account / Wallet</label>
+          <input id="account" placeholder="Your account or wallet">
+          <button class="full primary" onclick="withdraw()">Request Withdrawal</button>
+          <p id="withdrawStatus" class="status"></p>
+        </div>
+      </section>
+    </main>
+
+    <nav>
+      <button onclick="go('ads')">◉<span>Ads</span></button>
+      <button onclick="go('tasks')">☑<span>Tasks</span></button>
+      <button onclick="go('invite')">♧<span>Invite</span></button>
+      <button onclick="go('withdraw')">▭<span>Withdraw</span></button>
+    </nav>
+  </div>
+
+  <div id="toast"></div>
+  <script src="app.js"></script>
+</body>
+</html>
